@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+            <record id="action_salary_advance_all" model="ir.actions.act_window">
+            <field name="name">Salary Advance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">salary.advance</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+         <record model="ir.ui.view" id="employee_salary_advance_form_inherit">
+        <field name="name">employee.salary.advance.form.inherit</field>
+        <field name="model">salary.advance</field>
+        <field name="inherit_id" ref="ohrms_salary_advance.view_salary_advance_form"/>
+        <field name="arch" type="xml">
+            <field name="employee_id" position="attributes">
+                 <attribute name="attrs">{'readonly': [('admin_login', '=', False)]}</attribute>
+            </field>
+            <field name="department" position="after">
+               <field name="admin_login" invisible="1"/>
+            </field>
+            <xpath expr="//button[@name='approve_request']" position="replace">
+               <button name="approve_request" string="Approve" type="object" states="submit" class="oe_highlight" groups="hr.group_hr_manager"/>
+
+             </xpath>
+        </field>
+    </record>
+
+         <menuitem id="menu_my_salary_advance_all" groups="hr.group_hr_manager" action="action_salary_advance_all" parent="ohrms_salary_advance.parent_menu_salary_advance" name="All Salary Advance" sequence="2" />
+
+
+    </data>
+</odoo>

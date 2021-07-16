@@ -1,0 +1,11 @@
+<odoo>
+  <data>
+
+        <template id="assets_backend_custum_id" name="busybee_custom" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/busybee_custom/static/src/js/web_title.js"></script>
+            </xpath>
+        </template>
+
+  </data>
+</odoo>

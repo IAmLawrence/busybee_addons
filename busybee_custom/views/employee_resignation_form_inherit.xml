@@ -8,6 +8,9 @@
             <field name="employee_id" position="attributes">
                  <attribute name="attrs">{'readonly': [('state', '=', 'cancel')]}</attribute>
             </field>
+            <field name="employee_contract" position="replace">
+                <field name="emp_contract"/>
+            </field>
         </field>
     </record>
     </data>

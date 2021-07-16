@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="employee_loan_form_inherit">
+        <field name="name">employee.loan.form.inherit</field>
+        <field name="model">hr.loan</field>
+        <field name="inherit_id" ref="ohrms_loan.hr_loan_form_view"/>
+        <field name="arch" type="xml">
+             <field name="loan_lines" position="attributes">
+                 <attribute name="attrs">{'readonly': [('state', '=', 'approve')]}</attribute>
+            </field>
+             <xpath expr="//button[@name='action_approve']" position="replace">
+               <button name="action_approve" type="object" string="Approve" states="waiting_approval_1" class="oe_highlight" groups="hr.group_hr_manager"/>
+             </xpath>
+        </field>
+    </record>
+
+    <record id="action_hr_all_loan_request" model="ir.actions.act_window">
+        <field name="name">All Employee Loan</field>
+        <field name="res_model">hr.loan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="All Employee Loan"
+        parent="ohrms_loan.menu_base_hr_loan_request"
+        id="menu_hr_all_loan_request"
+        action="action_hr_all_loan_request"
+        groups="hr.group_hr_manager"
+    />
+
+    </data>
+
+</odoo>
